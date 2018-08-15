@@ -1,0 +1,64 @@
+uses
+	gl,glu,glut,
+	block,renderer,texture,camera;
+var
+	cmr:TCamera;
+	rdr:TRenderer;
+	txr:TTextureReader;
+	blk:TBlock_Solid;
+	id:GLUint;
+procedure display;cdecl;
+begin
+	glEnable(GL_DEPTH_TEST);
+	glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity;
+	gluPerspective(60,1,0.1,30);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity;
+	cmr.Modify;
+	blk.Redraw(rdr);
+	glFlush;
+end;
+procedure keyboard(key:byte;mx,my:longint);cdecl;
+begin
+	case(chr(key))of
+		'w':cmr.Move(0.1);
+		's':cmr.Move(-0.1);
+		'i':cmr.Turn(0,-5);
+		'k':cmr.Turn(0,5);
+		'j':cmr.Turn(5,0);
+		'l':cmr.Turn(-5,0);
+		'z':cmr.MoveY(0.1);
+		'c':cmr.MoveY(-0.1);
+	end;
+	glutPostRedisplay;
+end;
+procedure idle;cdecl;
+begin
+	glutPostRedisplay;
+end;
+begin
+	glutInit(@argc,argv);
+	glutInitDisplayMode(GLUT_RGB or GLUT_SINGLE);
+	glutInitWindowSize(200,200);
+	glutInitWindowPosition(800,300);
+	glutCreateWindow('');
+	glutDisplayFunc(@display);
+	glutIdleFunc(@idle);
+	glutKeyboardFunc(@keyboard);
+	cmr:=TCamera.Create;
+	rdr:=TRenderer.Create;
+	txr:=TTextureReader.Create;
+	blk:=TBlock_Solid.Create;
+	id:=txr.Reload('test.bmp');
+	blk.LoadTexture(0,id);
+	blk.LoadTexture(1,id);
+	blk.LoadTexture(2,id);
+	blk.LoadTexture(3,id);
+	blk.LoadTexture(4,id);
+	blk.LoadTexture(5,id);
+	blk.LoadTexture(6,id);
+	blk.LoadTexture(7,id);
+	glutMainLoop;
+end.
