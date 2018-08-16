@@ -5,7 +5,7 @@ interface
 
 uses
 	gl,
-	player,texture,renderer;
+	entity,texture,renderer;
 
 type
 	TOnMouseLeftFunc	=procedure(Sender:TPlayer);
@@ -51,6 +51,7 @@ type
 			facing:byte;
 		public
 			constructor	Create;
+			constructor Create(fac:byte);
 			procedure	LoadTexture(fce:byte;tnm:GLUint);
 			procedure	ReDraw(rdr:TRenderer);
 	end;
@@ -75,6 +76,13 @@ constructor TBlock_Solid.Create;
 begin
 	FillChar(texture,sizeof(texture),0);
 	event:=TBlockEvent.Create;
+	facing:=0;
+end;
+constructor TBlock_Solid.Create(fce:byte);
+begin
+	FillChar(texture,sizeof(texture),0);
+	event:=TBlockEvent.Create;
+	facing:=fcd;
 end;
 procedure TBlock_Solid.LoadTexture(fce:byte;tnm:GLUint);
 begin
