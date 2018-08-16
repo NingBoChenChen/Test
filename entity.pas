@@ -4,7 +4,7 @@ unit entity;
 interface
 
 uses
-	camera;
+	model,camera;
 
 type
 	TPosition=record
@@ -15,11 +15,18 @@ type
 	TEntity=class
 		private
 			pos:TPosition;
+			mdl:TModel;
+			lkud,lkar:extended;
 		public
+			constructor Create;
+			procedure Redraw;
+			procedure Trs(p:TPosition);
+			procedure Mov(t:longint);
+			procedure Rot(ud,ar:extended);
 	end;
 	
 type
-	TPlayer=class
+	TPlayer=class(TEntity)
 		private
 			
 		public
