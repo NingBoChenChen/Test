@@ -1,4 +1,4 @@
-{$MODE DELPHI}
+{$MODE OBJFPC}
 unit block;
 
 interface
@@ -8,11 +8,11 @@ uses
 	entity,texture,renderer;
 
 type
-	TOnMouseLeftFunc	=procedure(Sender:TPlayer);
-	TOnMouseRightFunc	=procedure(Sender:TPlayer);
-	TOnSelectFunc		=procedure(Sender:TPlayer);
-	TOnCreateFunc		=procedure(Sender:TPlayer);
-	TOnDestroyFunc		=procedure(Sender:TPlayer);
+	TOnMouseLeftFunc	=procedure(Sender:TEntity);
+	TOnMouseRightFunc	=procedure(Sender:TEntity);
+	TOnSelectFunc		=procedure(Sender:TEntity);
+	TOnCreateFunc		=procedure(Sender:TEntity);
+	TOnDestroyFunc		=procedure(Sender:TEntity);
 
 type
 	TBlockEvent=class
