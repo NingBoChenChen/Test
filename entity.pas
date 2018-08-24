@@ -63,7 +63,7 @@ type
 
 implementation
 
-constructor TBlockEvent.Create;
+constructor TentityEvent.Create;
 begin
 	MouseLeftFunc	:=NIL;
 	MouseRightFunc	:=NIL;
@@ -93,8 +93,16 @@ begin
 	lkar:=0;
 end;
 procedure TEntity.Redraw;
+begin
+end;
 procedure TEntity.Trs(p:TPosition);
+begin
+end;
 procedure TEntity.Mov(t:longint);
+begin
+end;
 procedure TEntity.Rot(ud,ar:extended);
+begin
+end;
 
 end.

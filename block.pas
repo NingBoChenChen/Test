@@ -51,7 +51,7 @@ type
 			facing:byte;
 		public
 			constructor	Create;
-			constructor Create(fac:byte);
+			constructor Create(fce:byte);
 			procedure	LoadTexture(fce:byte;tnm:GLUint);
 			procedure	ReDraw(rdr:TRenderer);
 	end;
@@ -82,7 +82,7 @@ constructor TBlock_Solid.Create(fce:byte);
 begin
 	FillChar(texture,sizeof(texture),0);
 	event:=TBlockEvent.Create;
-	facing:=fcd;
+	facing:=fce;
 end;
 procedure TBlock_Solid.LoadTexture(fce:byte;tnm:GLUint);
 begin
@@ -100,22 +100,22 @@ const
 begin
 	glBindTexture(GL_TEXTURE_2D,texture[0]);
 	rdr.Init;
-	rdr.TexCoord2f(-b*0.5+0.5, 0*0.5+0.5);rdr.Vertex3f(-b,h, 0);
-	rdr.TexCoord2f(-a*0.5+0.5, c*0.5+0.5);rdr.Vertex3f(-a,h, c);
-	rdr.TexCoord2f( a*0.5+0.5, c*0.5+0.5);rdr.Vertex3f( a,h, c);
-	rdr.TexCoord2f( b*0.5+0.5, 0*0.5+0.5);rdr.Vertex3f( b,h, 0);
-	rdr.TexCoord2f( a*0.5+0.5,-c*0.5+0.5);rdr.Vertex3f( a,h,-c);
-	rdr.TexCoord2f(-a*0.5+0.5,-c*0.5+0.5);rdr.Vertex3f(-a,h,-c);
+	rdr.TexCoord2f(-b{*0.5}+0.5, 0{*0.5}+0.5);rdr.Vertex3f(-b,h, 0);
+	rdr.TexCoord2f(-a{*0.5}+0.5, c{*0.5}+0.5);rdr.Vertex3f(-a,h, c);
+	rdr.TexCoord2f( a{*0.5}+0.5, c{*0.5}+0.5);rdr.Vertex3f( a,h, c);
+	rdr.TexCoord2f( b{*0.5}+0.5, 0{*0.5}+0.5);rdr.Vertex3f( b,h, 0);
+	rdr.TexCoord2f( a{*0.5}+0.5,-c{*0.5}+0.5);rdr.Vertex3f( a,h,-c);
+	rdr.TexCoord2f(-a{*0.5}+0.5,-c{*0.5}+0.5);rdr.Vertex3f(-a,h,-c);
 	rdr.Flush;
 	
 	glBindTexture(GL_TEXTURE_2D,texture[1]);
 	rdr.Init;
-	rdr.TexCoord2f(-b*s+s, 0*s+s);rdr.Vertex3f(-b,-h, 0);
-	rdr.TexCoord2f(-a*s+s, c*s+s);rdr.Vertex3f(-a,-h, c);
-	rdr.TexCoord2f( a*s+s, c*s+s);rdr.Vertex3f( a,-h, c);
-	rdr.TexCoord2f( b*s+s, 0*s+s);rdr.Vertex3f( b,-h, 0);
-	rdr.TexCoord2f( a*s+s,-c*s+s);rdr.Vertex3f( a,-h,-c);
-	rdr.TexCoord2f(-a*s+s,-c*s+s);rdr.Vertex3f(-a,-h,-c);
+	rdr.TexCoord2f(-b{*0.5}+0.5, 0{*0.5}+0.5);rdr.Vertex3f(-b,-h, 0);
+	rdr.TexCoord2f(-a{*0.5}+0.5, c{*0.5}+0.5);rdr.Vertex3f(-a,-h, c);
+	rdr.TexCoord2f( a{*0.5}+0.5, c{*0.5}+0.5);rdr.Vertex3f( a,-h, c);
+	rdr.TexCoord2f( b{*0.5}+0.5, 0{*0.5}+0.5);rdr.Vertex3f( b,-h, 0);
+	rdr.TexCoord2f( a{*0.5}+0.5,-c{*0.5}+0.5);rdr.Vertex3f( a,-h,-c);
+	rdr.TexCoord2f(-a{*0.5}+0.5,-c{*0.5}+0.5);rdr.Vertex3f(-a,-h,-c);
 	rdr.Flush;
 	
 	glBindTexture(GL_TEXTURE_2D,texture[2]);
