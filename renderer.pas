@@ -80,7 +80,6 @@ begin
 		glDrawArrays(GL_TRIANGLE_FAN,0,vertexes);
 		Init();
 	end;
-
 end;
 
 end.
